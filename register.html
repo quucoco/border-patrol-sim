@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register Applicant</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="card">
+    <h2>📝 Applicant Registration</h2>
+    <form action="/register" method="post" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Full Name" required><br>
+      <input type="date" name="dob" required><br>
+      <input type="text" name="citizenship" placeholder="Citizenship" required><br>
+      <label>Upload Passport Photo:</label><br>
+      <input type="file" name="photo" accept="image/*" required><br><br>
+      <button type="submit" class="button">Register</button>
+    </form>
+  </div>
+</body>
+</html>

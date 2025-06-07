@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Officer Panel</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="card">
+    <h2>👮 Officer Review Panel</h2>
+    <h3>Pending Entries</h3>
+    {% for entry in entries %}
+      <div style="margin:20px 0;">
+        <img src="/uploads/{{ entry.photo }}" width="300"/><br>
+        <strong>Matched with:</strong><br>
+        {% if entry.match %}
+          <div style="margin-top:10px;">
+            <img src="/registered/{{ entry.match.photo }}" width="150"/><br>
+            <strong>{{ entry.match.name }}</strong><br>
+            DOB: {{ entry.match.dob }}<br>
+            Citizenship: {{ entry.match.citizenship }}<br>
+            Confidence: {{ entry.match.confidence }}<br>
+          </div>
+        {% else %}
+          <em>No match found</em><br>
+        {% endif %}
+        <form action="/decision/{{ entry.photo }}" method="post" style="display:inline;">
+          <input type="hidden" name="decision" value="approve">
+          <button class="button green">Approve</button>
+        </form>
+        <form action="/decision/{{ entry.photo }}" method="post" style="display:inline;">
+          <input type="hidden" name="decision" value="deny">
+          <button class="button red">Deny</button>
+        </form>
+      </div>
+    {% else %}
+      <p>No pending entries.</p>
+    {% endfor %}
+  </div>
+</body>
+</html>
